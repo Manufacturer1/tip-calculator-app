@@ -15,7 +15,9 @@ export default {
           darkGrayishCyan:'hsl(186, 14%, 43%)',
           grayishCyan:'hsl(184, 14%, 56%)',
           lighGrayishCyan:'hsl(185, 41%, 84%)',
-          veryLightGrayishCyan:'hsl(189, 41%, 97%)'
+          veryLightGrayishCyan:'hsl(189, 41%, 97%)',
+          hoverCyan:'hsl(183, 51%, 74%)',
+          hoverDarckCyan:'hsl(172, 79%, 25%)',
         }
       }
     },
