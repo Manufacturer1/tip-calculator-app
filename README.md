@@ -29,7 +29,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [GitHub](https://github.com/Manufacturer1/tip-calculator-app)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [You can visit the app here](https://tip-calculator-app-beta-woad.vercel.app/)
 
 ## My process
 
