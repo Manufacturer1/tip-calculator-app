@@ -12,6 +12,8 @@ function App() {
     '5','10','15','25','50','Custom'
   ];
 
+
+
   return (
     <>
       <div className="mb-10">
@@ -20,7 +22,7 @@ function App() {
       <div className="m-auto w-full md:max-w-[850px] p-8 bg-white flex flex-col md:flex-row gap-10 rounded-2xl">
           <div className="basis-[50%]">
             <div className="mb-8">
-              <BillInput label={"Bill"} icon={iconDollar}/>
+              <BillInput label={"Bill"} icon={iconDollar} placeholder={"0"}/>
             </div>
               <label className="text-neutral-darkGrayishCyan font-semibold block mb-2">Select Tip %</label>
               <div className="grid grid-cols-2 md:grid-cols-3 md:grid-row-2 gap-3 mb-8">
@@ -33,7 +35,7 @@ function App() {
                   }
               </div>
               <div>
-                <BillInput label={"Number of People"} icon={iconPerson}/>
+                <BillInput label={"Number of People"} icon={iconPerson} placeholder={"0"}/>
               </div>
           </div>
           <div className="bg-neutral-veryDarkCyan basis-[50%] rounded-xl py-10 px-7">
