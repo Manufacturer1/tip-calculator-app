@@ -1,28 +1,44 @@
 import {React,useState,useCallback} from "react";
 
 
-const BillInput = ({label,icon,placeholder}) =>{
-    const [inputValue,setInputValue] = useState('');
+const BillInput = ({
+    label,
+    icon,
+    placeholder,
+    inputValue,
+    setInputValue,
+    }) =>{
+    
     const [error,setError] = useState('');
 
-    const handleInputChange = useCallback((e) => {
-        setError("");
-        let value = e.target.value;
-
-        if (value === "") {
-            setInputValue("");
+    const handleInputChange = useCallback(
+        (e) => {
+          const value = e.target.value; 
+          setError("");
+      
+          if (value === "") {
+            setInputValue(""); 
             return;
-        }
-        if (parseFloat(value) > 0) {
-            setInputValue(value);
-        } else if (parseFloat(value) === 0) {
+          }
+          if(value % 1 !== 0 && label.toLowerCase() === 'number of people'){
+                setInputValue(parseInt(value));
+                return;
+          }
+          if (parseFloat(value) > 0) {
+            setInputValue(value); 
+          } else if (parseFloat(value) === 0) {
             setError("Can't be zero");
             setInputValue("");
-        }
-    }, []);
+          }
+        },
+        [setInputValue]
+      );
+      
 
     const handleKeyDown = useCallback((e) => {
-        if (e.key === "-") {
+        if (e.key === "-" || e.key.toLowerCase() === 'e' ||
+            (label.toLowerCase() === 'number of people' && e.key === '.') ||
+            (label.toLowerCase() === 'number of people' && e.key === ',')) {
             e.preventDefault();
         }
     }, []);
@@ -39,7 +55,7 @@ const BillInput = ({label,icon,placeholder}) =>{
    
         <input value={inputValue}
         onKeyDown={handleKeyDown}
-        onChange={(e) => handleInputChange(e)} onWheel={(e) => e.target.blur()} className={`bg-neutral-veryLightGrayishCyan    ${(placeholder === 'Custom' ? 'text-2xl py-[.17rem]' : 'pl-[40px] text-xl py-[.4rem]')} px-[.8rem] text-right w-full rounded-md hover:border-primary-strongCyan border-2 border-solid transition-border duration-500 font-bold text-neutral-veryDarkCyan ${(error === '' || placeholder === 'Custom') ? ' border-neutral-100' : 'border-2 border-solid border-orange-600'}`}
+        onChange={handleInputChange} onWheel={(e) => e.target.blur()} className={`bg-neutral-veryLightGrayishCyan    ${(placeholder === 'Custom' ? 'text-2xl py-[.17rem]' : 'pl-[40px] text-xl py-[.4rem]')} px-[.8rem] text-right w-full rounded-md hover:border-primary-strongCyan border-2 border-solid transition-border duration-500 font-bold text-neutral-veryDarkCyan ${(error === '' || placeholder === 'Custom') ? ' border-neutral-100' : 'border-2 border-solid border-orange-600'}`}
          type="number" placeholder={placeholder} />
             
          <img className="absolute top-[46px] left-[15px]" src={icon} />
